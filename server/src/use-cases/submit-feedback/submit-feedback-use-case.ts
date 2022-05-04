@@ -9,12 +9,12 @@ interface IRequest {
   screenshot?: string;
 }
 
-// @injectable()
+@injectable()
 export class SubmitFeedbackUseCase {
   constructor(
-    // @inject('FeedbacksRepository')
+    @inject('FeedbacksRepository')
     private feedbacksRepository: FeedbacksRepository,
-    // @inject('MailProvider')
+    @inject('MailProvider')
     private mailProvider: MailProvider
   ) {}
 
