@@ -9,17 +9,29 @@ interface IRequest {
   screenshot?: string;
 }
 
-@injectable()
+// @injectable()
 export class SubmitFeedbackUseCase {
   constructor(
-    @inject('FeedbacksRepository')
+    // @inject('FeedbacksRepository')
     private feedbacksRepository: FeedbacksRepository,
-    @inject('MailProvider')
+    // @inject('MailProvider')
     private mailProvider: MailProvider
   ) {}
 
   async execute({ type, comment, screenshot }: IRequest) {
     await this.feedbacksRepository.create({ type, comment, screenshot });
+
+    if (!type) {
+      throw new Error('Type is required');
+    }
+
+    if (!comment) {
+      throw new Error('Comment is required');
+    }
+
+    if (screenshot && !screenshot.startsWith('data:image/png;base64')) {
+      throw new Error('Invalid screenshot format');
+    }
 
     await this.mailProvider.sendMail({
       subject: 'Novo feedback',
