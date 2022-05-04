@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 import html2canvas from "html2canvas";
+
+import screenshotAudioUrl from './../../assets/audio/screenshot.mp3';
+
 import { Camera, Trash } from "phosphor-react";
 import { Loading } from "../Loading";
 
@@ -15,14 +18,41 @@ export function ScreenshotButton({
   const [isTakingScreenshot, setIsTakingScreenshot] = useState(false);
 
   async function handleTakeScreenshot() {
+    const screen = document.querySelector('html');
     setIsTakingScreenshot(true);
 
-    const canvas = await html2canvas(document.querySelector('html')!);
+    const canvas = await html2canvas(screen!);
+
+    makeScreenshotEffect(screen!);
+
     const base64image = canvas.toDataURL('image/png');
 
     onScreenshotTook(base64image);
 
     setIsTakingScreenshot(false);
+  }
+
+  async function makeScreenshotEffect(screen: HTMLHtmlElement) {
+    const TRANSITION_TIME = '0.4s';
+    const OPACITY_EXPECTED = '0.8';
+    const AUDIO_VOLUME = .25;
+    const SCREENSHOT_EFFECT_TIME_IN_MILLISECOND = 500;
+    
+    const previousTransitionValue = screen.style.transition;
+    const previousOpacityValue = screen.style.opacity;
+
+    const screenshotSoundEffect = new Audio(screenshotAudioUrl);
+
+    screenshotSoundEffect.volume = AUDIO_VOLUME;
+    await screenshotSoundEffect.play();
+
+    screen.style.transition = TRANSITION_TIME;
+    screen.style.opacity = OPACITY_EXPECTED;
+
+    setTimeout(() => {
+      screen.style.opacity = previousOpacityValue;
+      screen.style.transition = previousTransitionValue;
+    }, SCREENSHOT_EFFECT_TIME_IN_MILLISECOND);
   }
 
   if (screenshot) {
