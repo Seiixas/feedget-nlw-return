@@ -1,5 +1,7 @@
-import { MailProvider } from '../providers/mail-provider/mail-provider';
-import { FeedbacksRepository } from '../repositories/feedbacks-repository';
+import { inject, injectable } from 'tsyringe';
+
+import { FeedbacksRepository } from '../../repositories/feedbacks-repository';
+import { MailProvider } from '../../shared/container/providers/mail-provider/mail-provider';
 
 interface IRequest {
   type: string;
@@ -7,9 +9,12 @@ interface IRequest {
   screenshot?: string;
 }
 
+@injectable()
 export class SubmitFeedbackUseCase {
   constructor(
+    @inject('FeedbacksRepository')
     private feedbacksRepository: FeedbacksRepository,
+    @inject('MailProvider')
     private mailProvider: MailProvider
   ) {}
 
