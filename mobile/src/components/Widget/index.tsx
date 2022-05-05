@@ -1,12 +1,25 @@
 import React from 'react';
-import { View } from 'react-native';
 
+import { TouchableOpacity } from 'react-native';
+import { ChatTeardropDots } from 'phosphor-react-native';
+
+import { View } from 'react-native';
+ 
 import { styles } from './styles';
+import { theme } from '../../theme';
 
 export function Widget() {
   return (
-    <View style={styles.container}>
+    <>
+      <TouchableOpacity
+        style={styles.button} >
 
-    </View>
+        <ChatTeardropDots 
+          size={24}
+          color={theme.colors.text_on_brand_color}
+          weight="bold"/>
+
+      </TouchableOpacity>
+    </>
   );
 }
