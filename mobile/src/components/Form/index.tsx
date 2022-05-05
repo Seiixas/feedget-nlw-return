@@ -9,6 +9,8 @@ import {
 import { ArrowLeft } from 'phosphor-react-native';
 import { captureScreen } from 'react-native-view-shot';
 
+import * as FileSystem from 'expo-file-system';
+
 import { styles } from './styles';
 import { theme } from '../../theme';
 import { ScreenshotButton } from '../ScreenshotButton';
@@ -17,6 +19,7 @@ import { Button } from '../Button';
 import { feedbackTypes } from '../../utils/feedbackTypes';
 
 import { FeedbackType } from '../Widget';
+import { api } from '../../libs/api';
 
 interface Props {
   feedbackType: FeedbackType;
@@ -25,14 +28,16 @@ interface Props {
 }
 
 export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props) {
-  const [screenshot, setScreenshot] = useState<string | null>(null);
-
+  const [isSendingFeedback, setIsSendingFeedback] = useState(false);
+  const [screenshot, setScreenshot] = useState<string | null>(null); 
+  const [comment, setComment] = useState<string>('');
+ 
   const feedbackTypeInfo = feedbackTypes[feedbackType];
 
   function handleScreenshot() {
     captureScreen({
       format: 'jpg',
-      quality: 0.8
+      quality: 0.1
     })
     .then(uri => setScreenshot(uri))
     .catch(error => console.error(error))
@@ -40,6 +45,28 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
 
   function handleRemoveScreenshot() {
     setScreenshot(null);
+  }
+
+  async function handleSubmitFeedback() {
+    if (isSendingFeedback) {
+      return;
+    }
+
+    setIsSendingFeedback(true);
+    const screenshotBase64 = screenshot && await FileSystem.readAsStringAsync(screenshot, { encoding: 'base64' });
+
+    try {
+      await api.post('/feedbacks', {
+        type: feedbackType,
+        screenshot: `data:image/png;base64, ${screenshotBase64}`,
+        comment
+      });
+
+      onFeedbackSent();
+    } catch(err) {
+      console.log(err);
+      setIsSendingFeedback(false);
+    }
   }
 
   return (
@@ -70,6 +97,7 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
         autoCorrect={false}
         multiline
         style={styles.input}
+        onChangeText={setComment}
         placeholder="Algo não está funcionando bem? Queremos corrigir. Conte com mais detalhes o que está acontecendo"
         placeholderTextColor={theme.colors.text_secondary} />
 
@@ -78,7 +106,9 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
           onTakeShot={handleScreenshot}
           onRemoveShot={handleRemoveScreenshot}
           screenshot={screenshot} />
-        <Button isLoading={false} />
+        <Button 
+          isLoading={isSendingFeedback}
+          onPress={handleSubmitFeedback} />
       </View>
     </View>
   );
