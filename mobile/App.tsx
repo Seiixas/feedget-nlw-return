@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { theme } from './src/theme';
 
+import AppLoading from 'expo-app-loading';
+
 import { 
   useFonts,
   Inter_400Regular,
@@ -9,8 +11,6 @@ import {
 } from '@expo-google-fonts/inter';
 
 import { Widget } from './src/components/Widget';
-
-const AppLoading = require('expo-app-loading');
 
 export default function App() {
   const [fontsLoaded] = useFonts({
