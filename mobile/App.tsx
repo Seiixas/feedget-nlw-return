@@ -10,7 +10,7 @@ import {
   Inter_500Medium 
 } from '@expo-google-fonts/inter';
 
-import { Widget } from './src/components/Widget';
+import Widget from './src/components/Widget';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -28,12 +28,13 @@ export default function App() {
       backgroundColor: theme.colors.background
     }}>
 
-      <Widget />
-
       <StatusBar
         style="light"
         backgroundColor="transparent"
         translucent />
+  
+      <Widget />
+    
     </View>
   );
 }
