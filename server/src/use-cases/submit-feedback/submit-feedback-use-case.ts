@@ -33,14 +33,18 @@ export class SubmitFeedbackUseCase {
       throw new Error('Invalid screenshot format');
     }
 
+    const emailBody = [
+      `<div style="font-family: sans-serif; font-size: 16px; color: #111">`,
+      `<p>Tipo do feedback ${type}</p>`,
+      `<p>Comentário ${comment}</p>`,
+      `</div>`,
+    ];
+
+    emailBody.push(screenshot ? `<img src="${screenshot}" alt="" />` : '');
+
     await this.mailProvider.sendMail({
       subject: 'Novo feedback',
-      body: [
-        `<div style="font-family: sans-serif; font-size: 16px; color: #111">`,
-        `<p>Tipo do feedback ${type}</p>`,
-        `<p>Comentário ${comment}</p>`,
-        `</div>`,
-      ].join('\n'),
+      body: emailBody.join('\n'),
     });
   }
 }
