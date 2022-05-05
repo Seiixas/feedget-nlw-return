@@ -79,6 +79,16 @@ Instale todas as dependências (preferencialmente pelo npm):
 npm install
 ```
 
+Altere o endereço IP presente em `mobile/src/libs/api.ts` para o endereço local da sua máquina:
+
+```ts
+import axios from "axios";
+
+export const api = axios.create({
+  baseURL: "MEU_IP_LOCAL_AQUI",
+});
+```
+
 Inicie o expo pelo script `start`
 
 ```bash
