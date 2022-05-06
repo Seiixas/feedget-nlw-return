@@ -12,7 +12,11 @@
 
 ### 🚀 Sobre
 
-O Feedget é um simpático <small>wid</small>get de feed<small>back</small> localizado ao canto inferior direito que possui opções de report de falhas em partes específicas de um site, sistema ou aplicação mobile. Foi desenvolvido durante a [Next Level Week Return](https://nextlevelweek.com/), um evento de uma semana da construção de uma aplicação web, mobile e server total zero.
+O Feedget é um simpático widget de feedback localizado ao canto inferior direito que possui opções de report de falhas em partes específicas de um site, sistema ou aplicação mobile. Foi desenvolvido durante a [Next Level Week Return](https://nextlevelweek.com/), um evento de uma semana da construção de uma aplicação web, mobile e server total zero.
+
+### 🧑🏽‍💻 Acessar o Feedget
+
+O Feedget está disponível em produção e pode ser acessado por meio do domínio: https://feedget-nlw-return.vercel.app/
 
 ### ✅ Progresso
 
@@ -20,9 +24,14 @@ O Feedget é um simpático <small>wid</small>get de feed<small>back</small> loca
 - [x] 🚀 Back-end criado em Node.
 - [x] 🚀 Versão Mobile criada em React Native.
 - [x] 🚀 Integração do mobile com back-end.
-- [ ] 👨‍🚀 Integração do front-end com back-end.
+- [x] 🚀 Integração do front-end com back-end.
+- [x] 🚀 Deploy.
 - [ ] 👨‍🚀 Containerizar com Docker.
-- [ ] 👨‍🚀 Deploy.
+- [ ] 👨‍🚀 Serviço de e-mail em produção.
+- [ ] 👨‍🚀 Melhorar body do e-mail.
+- [ ] 👨‍🚀 Validação de erros e campos.
+- [ ] 👨‍🚀 Tema light/dark.
+- [ ] 👨‍🚀 Dashboard de feedbacks.
 
 ### 💻 Rodar o Projeto
 
