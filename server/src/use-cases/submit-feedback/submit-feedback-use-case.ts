@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import { inject, injectable } from 'tsyringe';
 
 import { FeedbacksRepository } from '../../repositories/feedbacks-repository';
@@ -10,13 +12,15 @@ interface IRequest {
   screenshot?: string;
 }
 
+const mailProvider: string = process.env.ENVIRONMENT === 'DEV' ? 'NodeMailerMailProvider' : 'MailGunMailProvider';
+
 @injectable()
 export class SubmitFeedbackUseCase {
   constructor(
     @inject('FeedbacksRepository')
     private feedbacksRepository: FeedbacksRepository,
-    @inject('MailProvider')
-    private mailProvider: MailProvider
+    @inject(mailProvider)
+    private mailProvider: MailProvider,
   ) { }
 
   async execute({ type, comment, screenshot }: IRequest) {
