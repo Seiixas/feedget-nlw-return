@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { FeedbacksRepository } from '../../repositories/feedbacks-repository';
 import { MailProvider } from '../../shared/container/providers/mail-provider/mail-provider';
+import { handleEmailBody } from '../../utils/email-body-handler';
 
 interface IRequest {
   type: string;
@@ -16,7 +17,7 @@ export class SubmitFeedbackUseCase {
     private feedbacksRepository: FeedbacksRepository,
     @inject('MailProvider')
     private mailProvider: MailProvider
-  ) {}
+  ) { }
 
   async execute({ type, comment, screenshot }: IRequest) {
     await this.feedbacksRepository.create({ type, comment, screenshot });
@@ -33,18 +34,11 @@ export class SubmitFeedbackUseCase {
       throw new Error('Invalid screenshot format');
     }
 
-    const emailBody = [
-      `<div style="font-family: sans-serif; font-size: 16px; color: #111">`,
-      `<p>Tipo do feedback ${type}</p>`,
-      `<p>Comentário ${comment}</p>`,
-      `</div>`,
-    ];
-
-    emailBody.push(screenshot ? `<img src="${screenshot}" alt="" />` : '');
+    const emailBody = handleEmailBody({ comment, type, screenshot });
 
     await this.mailProvider.sendMail({
-      subject: 'Novo feedback',
-      body: emailBody.join('\n'),
+      subject: '[Feedget] Novo Feedback!',
+      body: emailBody,
     });
   }
 }
