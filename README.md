@@ -26,6 +26,7 @@ O Feedget está disponível em produção e pode ser acessado por meio do domín
 - [x] 🚀 Integração do mobile com back-end.
 - [x] 🚀 Integração do front-end com back-end.
 - [x] 🚀 Deploy.
+- [x] 🚀 Placeholder para o Widget.
 - [ ] 👨‍🚀 Containerizar com Docker.
 - [ ] 👨‍🚀 Serviço de e-mail em produção.
 - [ ] 👨‍🚀 Melhorar body do e-mail.
