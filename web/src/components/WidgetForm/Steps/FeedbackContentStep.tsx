@@ -5,6 +5,7 @@ import { api } from "../../../lib/api";
 import { CloseButton } from "../../CloseButton";
 import { Loading } from "../../Loading";
 import { ScreenshotButton } from "../ScreenshotButton";
+import { SpeechButton } from "../SpeechButton";
 
 interface FeedbackContentStepProps {
   feedbackType: FeedbackType,
@@ -50,7 +51,7 @@ export function FeedbackContentStep({
     setIsSendingFeedback(false);
     onFeedbackSent();
   }
-  
+
   return (
     <>
       <header>
@@ -76,6 +77,7 @@ export function FeedbackContentStep({
           className="min-w-[304px] w-full min-h-[112px] text-sm placeholder-zinc-500 dark:placeholder-zinc-400  text-zinc-800 dark:text-zinc-100 border-zinc-300 dark:border-zinc-600 bg-transparent rounded-md focus:border-brand-500 focus:ring-brand-500 focus:ring-1 focus:outline-none resize-none scrollbar scrollbar-thumb-zinc-200 dark:scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin"
           placeholder="Conte com detalhes o que está acontecendo"
           onChange={event => setComment(event.target.value)}
+          value={comment}
         />
 
         <footer className="flex gap-2 mt-2">
@@ -83,6 +85,8 @@ export function FeedbackContentStep({
             screenshot={screenshot}
             onScreenshotTook={setScreenshot}
           />
+          <SpeechButton
+            onMicrophoneRecording={(message: string) => setComment(message)} />
           <button
             disabled={(comment.length === 0 || isSendingFeedback) ?? true}
             type="submit"
