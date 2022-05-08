@@ -16,6 +16,19 @@ model Feedback {
   type       String
   comment    String
   screenshot String?
+  is_solved  Boolean @default(false)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  updated_by String?
 
   @@map("feedbacks")
+}
+
+model User {
+  id String @id @default(uuid())
+
+  username String
+  password String
 }
