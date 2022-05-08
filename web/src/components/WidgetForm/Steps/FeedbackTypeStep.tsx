@@ -1,14 +1,18 @@
 import { FeedbackType, feedbackTypes } from '..';
 import { CloseButton } from '../../CloseButton';
+import { SettingsButton } from '../../SettingsButton';
 
 interface FeedbackTypeStepProps {
   onFeedbackTypeChanged: (type: FeedbackType) => void;
+  onSettingsOpened: () => void;
 }
 
-export function FeedbackTypeStep({ onFeedbackTypeChanged }: FeedbackTypeStepProps) {
+export function FeedbackTypeStep({ onFeedbackTypeChanged, onSettingsOpened }: FeedbackTypeStepProps) {
   return (
     <>
       <header>
+        <SettingsButton
+          onClick={onSettingsOpened} />
         <span className="text-xl leading-6">Deixe seu feedback</span>
         <CloseButton />
       </header>
