@@ -36,17 +36,24 @@ export type FeedbackType = keyof typeof feedbackTypes;
 export function WidgetForm() {
   const [feedbackType, setFeedbackType] = useState<FeedbackType | null>(null);
   const [feedbackSent, setFeedbackSent] = useState(false);
+  const [feedbackFinalMessage, setFeedbackFinalMessage] = useState('Agradecemos o seu feedback');
+  const [feedbackFinalType, setFeedbackFinalType] = useState<'error' | 'warning' | 'success'>('success');
  
   function handleRestartFeedback() {
     setFeedbackSent(false);
     setFeedbackType(null);
+    setFeedbackFinalType('success');
+    setFeedbackFinalMessage('Agradecemos o seu feedback');
   }
 
   return (
     <div className="bg-zinc-900 p-4 relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto">
      
       { feedbackSent ? (
-        <FeedbackSuccessStep onFeedbackRestartRequested={handleRestartFeedback} />
+        <FeedbackSuccessStep
+          onFeedbackRestartRequested={handleRestartFeedback}
+          message={feedbackFinalMessage}
+          type={feedbackFinalType} />
       ) : (
         <>
         {!feedbackType ? (
@@ -54,7 +61,9 @@ export function WidgetForm() {
           ) : <FeedbackContentStep
                 feedbackType={feedbackType}
                 onFeedbackRestartRequested={handleRestartFeedback}
-                onFeedbackSent={() => setFeedbackSent(true)} />}
+                onFeedbackSent={() => setFeedbackSent(true)}
+                changeMessage={(message: string) => setFeedbackFinalMessage(message)}
+                changeFeedbackType={(type: 'error' | 'warning' | 'success') => setFeedbackFinalType(type)} />}
             </>
           )}
 

@@ -29,8 +29,8 @@ O Feedget está disponível em produção e pode ser acessado por meio do domín
 - [x] 🚀 Placeholder para o Widget.
 - [x] 🚀 Melhorar body do e-mail.
 - [x] 🚀 Serviço de e-mail em produção.
+- [x] 🚀 Validação de erros e campos.
 - [ ] 👨‍🚀 Containerizar com Docker.
-- [ ] 👨‍🚀 Validação de erros e campos.
 - [ ] 👨‍🚀 Tema light/dark.
 - [ ] 👨‍🚀 Dashboard de feedbacks.
 

@@ -10,12 +10,16 @@ interface FeedbackContentStepProps {
   feedbackType: FeedbackType,
   onFeedbackRestartRequested: () => void;
   onFeedbackSent: () => void;
+  changeMessage: (message: string) => void;
+  changeFeedbackType: (type: 'success' | 'warning' | 'error') => void;
 }
 
 export function FeedbackContentStep({
     feedbackType,
     onFeedbackRestartRequested,
-    onFeedbackSent
+    onFeedbackSent,
+    changeMessage,
+    changeFeedbackType
   }: FeedbackContentStepProps) {
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [comment, setComment] = useState('');
@@ -28,16 +32,19 @@ export function FeedbackContentStep({
 
     setIsSendingFeedback(true);
 
-    console.log({
-      screenshot,
-      comment
-    })
-
-    await api.post('/feedbacks', {
-      type: feedbackType,
-      screenshot,
-      comment
-    });
+    try {
+      await api.post('/feedbacks', {
+        type: feedbackType,
+        screenshot,
+        comment
+      });
+    } catch (error: any) {
+      if (error.response.status === 500) {
+        changeFeedbackType('error');
+      } 
+      changeFeedbackType('warning');
+      changeMessage(error.response.data.message);
+    }
 
     setIsSendingFeedback(false);
     onFeedbackSent();
@@ -76,7 +83,7 @@ export function FeedbackContentStep({
             onScreenshotTook={setScreenshot}
           />
           <button
-            disabled={(comment.length === 0 || isSendingFeedback) ?? true}
+            disabled={(isSendingFeedback) ?? true}
             type="submit"
             className="p-2 bg-brand-500 rounded-md border-transparent flex-1 flex justify-center items-center text-sm hover:bg-brand-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 transition-colors disabled:opacity-50 disabled:hover:bg-brand-500"
             >
