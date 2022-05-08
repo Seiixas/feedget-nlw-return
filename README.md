@@ -30,8 +30,9 @@ O Feedget está disponível em produção e pode ser acessado por meio do domín
 - [x] 🚀 Melhorar body do e-mail.
 - [x] 🚀 Serviço de e-mail em produção.
 - [x] 🚀 Validação de erros e campos.
+- [x] 🚀 Voz para Texto no comentário.
+- [x] 🚀 Tema light/dark.
 - [ ] 👨‍🚀 Containerizar com Docker.
-- [ ] 👨‍🚀 Tema light/dark.
 - [ ] 👨‍🚀 Dashboard de feedbacks.
 
 ### 💻 Rodar o Projeto
