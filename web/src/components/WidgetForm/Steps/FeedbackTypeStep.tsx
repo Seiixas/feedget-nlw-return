@@ -21,7 +21,7 @@ export function FeedbackTypeStep({ onFeedbackTypeChanged, onSettingsOpened }: Fe
         { Object.entries(feedbackTypes).map(([key, value]) => {
           return (
             <button
-              className="bg-zinc-800 rounded-lg py-5 w-24 flex-1 flex flex-col items-center gap=2 border-2 border-transparent hover:border-brand-500 focus:border-brand-500 focus:outline-none"
+              className="bg-zinc-100 dark:bg-zinc-800 rounded-lg py-5 w-24 flex-1 flex flex-col items-center gap=2 border-2 border-transparent hover:border-brand-500 focus:border-brand-500 focus:outline-none"
               onClick={() => {onFeedbackTypeChanged(key as FeedbackType)}}
               key={key}
               type="button"
