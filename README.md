@@ -20,20 +20,27 @@ O Feedget está disponível em produção e pode ser acessado por meio do domín
 
 ### ✅ Progresso
 
-- [x] 🚀 Versão Web criada em ReactJS.
-- [x] 🚀 Back-end criado em Node.
-- [x] 🚀 Versão Mobile criada em React Native.
-- [x] 🚀 Integração do mobile com back-end.
-- [x] 🚀 Integração do front-end com back-end.
-- [x] 🚀 Deploy.
-- [x] 🚀 Placeholder para o Widget.
-- [x] 🚀 Melhorar body do e-mail.
-- [x] 🚀 Serviço de e-mail em produção.
-- [x] 🚀 Validação de erros e campos.
-- [x] 🚀 Voz para Texto no comentário.
-- [x] 🚀 Tema light/dark.
-- [ ] 👨‍🚀 Containerizar com Docker.
-- [ ] 👨‍🚀 Dashboard de feedbacks.
+```diff
++  [🚀] Versão Web criada em ReactJS.           ++
++  [🚀] Back-end criado em Node.                ++
++  [🚀] Versão Mobile criada em React Native.   ++
++  [🚀] Integração do mobile com back-end.      ++
++  [🚀] Integração do front-end com back-end.   ++
++  [🚀] Deploy.                                 ++
+@@ [🚀] Placeholder para o Widget.              @@
+@@ [🚀] Melhorar body do e-mail.                @@
+@@ [🚀] Serviço de e-mail em produção.          @@
+@@ [🚀] Validação de erros e campos.            @@
+@@ [🚀] Voz para Texto no comentário.           @@
+@@ [🚀] Tema light/dark.                        @@
+@@ [🚀] Suporte a multilinguagem.               @@
+#  [  ] Containerizar com Docker.                ##
+#  [  ] Dashboard de feedbacks.                  ##
+
++  Feitos com a NLW          ++
+@@ Feitos para a milha extra @@
+#  A fazer                   ##
+```
 
 ### 💻 Rodar o Projeto
 
