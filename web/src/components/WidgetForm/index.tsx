@@ -7,6 +7,7 @@ import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
 import { FeedbackContentStep } from "./Steps/FeedbackContentStep";
 import { FeedbackSuccessStep } from "./Steps/FeedbackSucessStep";
 import { WidgetSettings } from "./Steps/WidgetSettings";
+import { useTranslation } from "react-i18next";
 
 export const feedbackTypes = {
   BUG: {
@@ -40,6 +41,8 @@ export function WidgetForm() {
   const [feedbackFinalMessage, setFeedbackFinalMessage] = useState('Agradecemos o seu feedback');
   const [feedbackFinalType, setFeedbackFinalType] = useState<'error' | 'warning' | 'success'>('success');
   const [isSettingsOpened, setIsSettingsOpened] = useState(false);
+
+  const { t: translationOf } = useTranslation();
 
   function handleRestartFeedback() {
     setFeedbackSent(false);
@@ -77,7 +80,7 @@ export function WidgetForm() {
       }
 
           <footer className="text-xs text-neutral-400">
-            Feito com ❤️ &nbsp; pela <a className="underline underline-offset-2" href="http://www.rocketseat.com.br/" target="blank">Rocketseat</a>.
+            {translationOf('Footer')} <a className="underline underline-offset-2" href="http://www.rocketseat.com.br/" target="blank">Rocketseat</a>.
           </footer>
         </div>
   );
