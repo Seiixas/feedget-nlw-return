@@ -1,6 +1,9 @@
 import { Microphone } from "phosphor-react";
 import { useEffect, useState } from "react";
 
+import recodingAudioStartEffect from '../../assets/audio/recoding_audio_stop.mp3';
+import recodingAudioStopEffect from '../../assets/audio/recoding_audio_start.mp3';
+
 interface SpeechButtonProps {
   onMicrophoneRecording: (message: string) => void;
 }
@@ -27,17 +30,22 @@ export function SpeechButton ({ onMicrophoneRecording }: SpeechButtonProps) {
     handleListen()
   }, [isListening])
 
-  const handleListen = () => {
+  async function handleListen() {
+    const startRecodingSoundEffect = new Audio(recodingAudioStartEffect);
+    const stopRecodingSoundEffect = new Audio(recodingAudioStopEffect);
+
     if (isListening) {
       mic.start()
+      await startRecodingSoundEffect.play();
       mic.onend = () => {
         console.log('continue..')
         mic.start()
       }
     } else {
       mic.stop()
-      mic.onend = () => {
+      mic.onend = async () => {
         console.log('Stopped Mic on Click')
+        await stopRecodingSoundEffect.play();
       }
     }
     mic.onstart = () => {
@@ -61,7 +69,7 @@ export function SpeechButton ({ onMicrophoneRecording }: SpeechButtonProps) {
       type="button"
       onClick={() => setIsListening(prevState => !prevState)}
       title="Clique para começar a falar e transcrever em texto"
-      className="p-2 bg-zinc-200 dark:bg-zinc-800 rounded-md border-transparent dark:hover:bg-zinc-300 hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 transition-colors"
+      className="p-2 bg-zinc-200 dark:bg-zinc-800 rounded-md border-transparent hover:bg-zinc-300 dark:hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 transition-colors"
     >
       <Microphone
         size={36}
