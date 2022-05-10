@@ -3,8 +3,13 @@ import { CloseButton } from "../../CloseButton";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import { ArrowLeft } from "phosphor-react";
 
-export function WidgetSettings() {
+interface WidgetSettingsProps {
+  onFeedbackRestartRequested: () => void;
+}
+
+export function WidgetSettings({ onFeedbackRestartRequested }: WidgetSettingsProps) {
 
   const { t: translationOf } = useTranslation();
 
@@ -35,6 +40,12 @@ export function WidgetSettings() {
   return (
     <>
       <div className="bg-white dark:bg-zinc-900 p-4">
+        <button
+          type="button"
+          className="top-5 left-5 absolute text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-100"
+          onClick={onFeedbackRestartRequested}>
+          <ArrowLeft weight="bold" className="w-4 h4" />
+        </button>
         <CloseButton />
         <fieldset>
           <legend className="text-brand-500">
