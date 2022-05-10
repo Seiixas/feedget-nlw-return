@@ -23,7 +23,10 @@ i18n
           "Footer": "Made with ❤️ by",
           "BUG": "Bug",
           "IDEA": "Idea",
-          "OTHER": "Other"
+          "OTHER": "Other",
+          "Language": "Language",
+          "Color": "Colors",
+          "DarkMode": "Dark Mode"
         }
       },
       ptBR: {
@@ -36,7 +39,10 @@ i18n
           "Footer": "Feito com ❤️ pela",
           "BUG": "Problema",
           "IDEA": "Ideia",
-          "OTHER": "Outro"
+          "OTHER": "Outro",
+          "Language": "Idioma",
+          "Color": "Cores",
+          "DarkMode": "Modo Escuro"
         }
       },
       es: {
@@ -49,7 +55,10 @@ i18n
           "Footer": "Hecho con ❤️ por",
           "BUG": "Problema",
           "IDEA": "Idea",
-          "OTHER": "Otro"
+          "OTHER": "Otro",
+          "Language": "Idioma",
+          "Color": "Colores",
+          "DarkMode": "Modo Oscuro"
         }
       }
     },

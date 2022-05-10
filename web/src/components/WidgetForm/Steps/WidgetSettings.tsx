@@ -1,12 +1,12 @@
 import { Toggle } from "react-toggle-component";
 import { CloseButton } from "../../CloseButton";
 
-import spainFlag from '../../../assets/images/spain_flag.svg';
-import brazilFlag from '../../../assets/images/brazil_flag.svg';
-import usaFlag from '../../../assets/images/usa_flag.svg';
 import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 
 export function WidgetSettings() {
+
+  const { t: translationOf } = useTranslation();
 
   function handleDarkMode() {
     if (localStorage.getItem('color-theme')) {
@@ -37,8 +37,11 @@ export function WidgetSettings() {
       <div className="bg-white dark:bg-zinc-900 p-4">
         <CloseButton />
         <fieldset>
-          <legend>Cores</legend>
-          <label className="text-sm">Modo Escuro</label>
+          <legend className="text-brand-500">
+            <strong>{translationOf('Color')}</strong>
+          </legend>
+          <div className="flex justify-between py-1">
+            <label className="text-sm">{translationOf('DarkMode')}</label>
             <Toggle
               leftBackgroundColor="#996DFF"
               rightBackgroundColor="#8257e6"
@@ -54,8 +57,9 @@ export function WidgetSettings() {
               }
               className="block"
               name="toggle-1" />
-
-          <label className="text-sm">Daltonismo</label>
+          </div>
+          <div className="flex justify-between py-1">
+            <label className="text-sm">Daltonismo</label>
             <Toggle
               leftBackgroundColor="#996DFF"
               rightBackgroundColor="#8257e6"
@@ -66,23 +70,30 @@ export function WidgetSettings() {
               rightKnobColor="#fff"
               borderWidth="1px"
               name="toggle-2" />
+          </div>
+          <hr className="m-1" />
         </fieldset>
         <fieldset className="flex justify-center gap-2">
-          <legend>Idioma</legend>
+          <legend className="text-brand-500 py-1">
+            <strong>{translationOf('Language')}</strong>
+          </legend>
           <button
             type="button"
+            className="bg-brand-500 rounded py-1 px-2 text-white"
             onClick={() => handleChangeLanguage('ptBR')}>
-            <img src={brazilFlag} width={38} alt="" />
+              Português
           </button>
           <button
             type="button"
+            className="bg-brand-500 rounded py-1 px-2 text-white"
             onClick={() => handleChangeLanguage('en')}>
-            	<img src={usaFlag} width={38} alt="" />
+            	English
           </button>
           <button
             type="button"
+            className="bg-brand-500 rounded py-1 px-2 text-white"
             onClick={() => handleChangeLanguage('es')}>
-            <img src={spainFlag} width={38} alt="" />
+              Español
           </button>
           
         </fieldset>
