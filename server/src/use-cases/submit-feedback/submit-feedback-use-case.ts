@@ -13,14 +13,12 @@ interface IRequest {
   screenshot?: string;
 }
 
-const mailProvider = process.env.ENVIRONMENT === 'DEV' ? 'NodeMailerMailProvider' : 'MailGunMailProvider';
-
 @injectable()
 export class SubmitFeedbackUseCase {
   constructor(
     @inject('FeedbacksRepository')
     private readonly feedbacksRepository: FeedbacksRepository,
-    @inject(mailProvider)
+    @inject('MailProvider')
     private readonly mailProvider: MailProvider,
   ) { }
 
