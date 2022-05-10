@@ -34,6 +34,7 @@ O Feedget está disponível em produção e pode ser acessado por meio do domín
 @@ [🚀] Voz para Texto no comentário.           @@
 @@ [🚀] Tema light/dark.                        @@
 @@ [🚀] Suporte a multilinguagem.               @@
+@@ [🚀] Avaliação de severidade de bug.         @@
 #  [  ] Containerizar com Docker.                ##
 #  [  ] Dashboard de feedbacks.                  ##
 

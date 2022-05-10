@@ -1,4 +1,4 @@
-import { ArrowLeft, Camera } from "phosphor-react";
+import { ArrowLeft, ArrowRight } from "phosphor-react";
 import { FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FeedbackType, feedbackTypes } from "..";
@@ -25,6 +25,7 @@ export function FeedbackContentStep({
   }: FeedbackContentStepProps) {
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [comment, setComment] = useState('');
+  const [severity, setSeverity] = useState<string | null>(null);
   const [isSendingFeedback, setIsSendingFeedback] = useState(false);
   
   const { t: translationOf } = useTranslation();
@@ -40,7 +41,8 @@ export function FeedbackContentStep({
       await api.post('/feedbacks', {
         type: feedbackType,
         screenshot,
-        comment
+        comment,
+        severity
       });
     } catch (error: any) {
       changeFeedbackType('warning');
@@ -82,6 +84,69 @@ export function FeedbackContentStep({
           onChange={event => setComment(event.target.value)}
           value={comment}
         />
+        {feedbackType === 'BUG' && (
+          <div className="flex items-center justify-between py-1">
+            <span>Como você classifica o problema?</span>
+            <div>
+              <label 
+                htmlFor="level-1"
+                className="text-xl cursor-pointer"
+                title="Não me afeta tanto"
+                onClick={() => setSeverity('0%')}>😀</label>
+              <label 
+                htmlFor="level-2"
+                className="text-xl cursor-pointer"
+                title="Poderia melhorar"
+                onClick={() => setSeverity('25%')}>🙂</label>
+              <label 
+                htmlFor="level-3"
+                className="text-xl cursor-pointer"
+                title="Me incomoda"
+                onClick={() => setSeverity('50%')}>😐</label>
+              <label 
+                htmlFor="level-4"
+                className="text-xl cursor-pointer"
+                title="Tive problemas"
+                onClick={() => setSeverity('75%')}>🙁</label>
+              <label 
+                htmlFor="level-5"
+                className="text-xl cursor-pointer"
+                title="É crítico"
+                onClick={() => setSeverity('100%')}>😡</label>
+                
+              <input
+                type="radio"
+                className="hidden"
+                name="experience"
+                id="level-1"
+                value="0%" />
+              <input
+                type="radio"
+                className="hidden"
+                name="experience"
+                id="level-2"
+                value="25%" />
+              <input
+                type="radio"
+                className="hidden"
+                name="experience"
+                id="level-3"
+                value="50%" />
+              <input
+                type="radio"
+                className="hidden"
+                name="experience"
+                id="level-4"
+                value="75%" />
+              <input
+                type="radio"
+                className="hidden"
+                name="experience"
+                id="level-5"
+                value="100%" />
+            </div>
+          </div>
+        )}
 
         <footer className="flex gap-2 mt-2">
           <ScreenshotButton

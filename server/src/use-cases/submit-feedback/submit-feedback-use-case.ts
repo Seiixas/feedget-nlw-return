@@ -11,6 +11,7 @@ interface IRequest {
   type: string;
   comment: string;
   screenshot?: string;
+  severity?: string;
 }
 
 @injectable()
@@ -22,9 +23,7 @@ export class SubmitFeedbackUseCase {
     private readonly mailProvider: MailProvider,
   ) { }
 
-  async execute({ type, comment, screenshot }: IRequest) {
-    await this.feedbacksRepository.create({ type, comment, screenshot });
-
+  async execute({ type, comment, screenshot, severity }: IRequest) {
     if (!type) {
       throw new AppError('Type is required');
     }
@@ -36,6 +35,8 @@ export class SubmitFeedbackUseCase {
     if (screenshot && !screenshot.startsWith('data:image/png;base64')) {
       throw new AppError('Invalid screenshot format');
     }
+
+    await this.feedbacksRepository.create({ type, comment, screenshot, severity });
 
     const emailBody = handleEmailBody({ comment, type, screenshot });
 
