@@ -1,8 +1,8 @@
 import { Microphone } from "phosphor-react";
 import { useEffect, useState } from "react";
 
-import recodingAudioStartEffect from '../../assets/audio/recoding_audio_stop.mp3';
-import recodingAudioStopEffect from '../../assets/audio/recoding_audio_start.mp3';
+import recodingAudioStartEffect from '../../../assets/audio/recoding_audio_stop.mp3';
+import recodingAudioStopEffect from '../../../assets/audio/recoding_audio_start.mp3';
 
 interface SpeechButtonProps {
   onMicrophoneRecording: (message: string) => void;

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { FeedbackType, feedbackTypes } from "..";
 import { api } from "../../../lib/api";
 import { CloseButton } from "../../WidgetForm/Buttons/CloseButton";
-import { Loading } from "../../Loading";
+import { Loading } from "../../WidgetForm/Loading";
 import { ScreenshotButton } from "../../WidgetForm/Buttons/ScreenshotButton";
 import { SpeechButton } from "../../WidgetForm/Buttons/SpeechButton";
 
