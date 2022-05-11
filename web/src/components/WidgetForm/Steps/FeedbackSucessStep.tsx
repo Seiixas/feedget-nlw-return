@@ -1,6 +1,6 @@
 import { Bug, Warning } from "phosphor-react";
 import { useTranslation } from "react-i18next";
-import { CloseButton } from "../../CloseButton";
+import { CloseButton } from "../../WidgetForm/Buttons/CloseButton";
 
 interface FeedbackSuccessStepProps {
   onFeedbackRestartRequested: () => void;

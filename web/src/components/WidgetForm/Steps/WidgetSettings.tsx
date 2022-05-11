@@ -1,5 +1,5 @@
 import { Toggle } from "react-toggle-component";
-import { CloseButton } from "../../CloseButton";
+import { CloseButton } from "../../WidgetForm/Buttons/CloseButton";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";

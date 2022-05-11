@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { FeedbackType, feedbackTypes } from '..';
-import { CloseButton } from '../../CloseButton';
-import { SettingsButton } from '../../SettingsButton';
+import { CloseButton } from '../../WidgetForm/Buttons/CloseButton';
+import { SettingsButton } from '../../WidgetForm/Buttons/SettingsButton';
 
 interface FeedbackTypeStepProps {
   onFeedbackTypeChanged: (type: FeedbackType) => void;

@@ -3,10 +3,10 @@ import { FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FeedbackType, feedbackTypes } from "..";
 import { api } from "../../../lib/api";
-import { CloseButton } from "../../CloseButton";
+import { CloseButton } from "../../WidgetForm/Buttons/CloseButton";
 import { Loading } from "../../Loading";
-import { ScreenshotButton } from "../ScreenshotButton";
-import { SpeechButton } from "../SpeechButton";
+import { ScreenshotButton } from "../../WidgetForm/Buttons/ScreenshotButton";
+import { SpeechButton } from "../../WidgetForm/Buttons/SpeechButton";
 
 interface FeedbackContentStepProps {
   feedbackType: FeedbackType,
