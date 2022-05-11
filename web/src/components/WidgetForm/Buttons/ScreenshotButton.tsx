@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import html2canvas from "html2canvas";
 
-import screenshotAudioUrl from './../../assets/audio/screenshot.mp3';
+import screenshotAudioUrl from './../../../assets/audio/screenshot.mp3';
 
 import { Camera, Trash } from "phosphor-react";
 import { Loading } from "../Loading";
