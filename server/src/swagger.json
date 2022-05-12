@@ -117,32 +117,75 @@
             }
           }
         }
-      }
-    },
-    "/specifications": {
-      "post": {
+      },
+      "get": {
         "tags": [
-          "Specifications"
+          "Feedback"
         ],
-        "summary": "Create a specification",
-        "description": "Create a new specification",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/definitions/Specification"
+        "summary": "Get feedbacks",
+        "description": "Get all feedbacks",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id" : {
+                        "type": "string"
+                      },
+                      "comment" : {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "screenshot": {
+                        "type": "string"
+                      },
+                      "is_solved": {
+                        "type": "boolean"
+                      },
+                      "severity": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "updated_by": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
               }
             }
           }
-        },
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Specification already exists"
-          }
         }
+      }
+    },
+    "/feedbacks/:id/done": {
+      "patch": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Mark feedback as done",
+        "description": "Mark feedback as done"
+      }
+    },
+    "/feedbacks/:id/undone": {
+      "patch": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Mark feedback as undone",
+        "description": "Mark feedback as undone"
       }
     }
   },

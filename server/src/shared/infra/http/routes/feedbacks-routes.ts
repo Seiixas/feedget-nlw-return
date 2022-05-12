@@ -4,6 +4,7 @@ import { MarkFeedbackDoneController } from '../../../../use-cases/mark-feedback-
 import { MarkFeedbackUndoController } from '../../../../use-cases/mark-feedback-undo/mark-feeback-undo-controller';
 
 import { SubmitFeedbackController } from '../../../../use-cases/submit-feedback/submit-feedback-controller';
+import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 
 const feedbacksRouter = Router();
 
@@ -13,7 +14,7 @@ const markFeedbackDoneController = new MarkFeedbackDoneController();
 const markFeedbackUndoController = new MarkFeedbackUndoController();
 
 feedbacksRouter.post('/feedbacks', submitFeedbackController.handle);
-feedbacksRouter.get('/feedbacks', listFeedbacksController.handle);
+feedbacksRouter.get('/feedbacks', ensureAuthenticated, listFeedbacksController.handle);
 feedbacksRouter.patch('/feedbacks/:id/done', markFeedbackDoneController.handle);
 feedbacksRouter.patch('/feedbacks/:id/undone', markFeedbackUndoController.handle);
 

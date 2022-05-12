@@ -3,15 +3,24 @@ import { api } from "../../lib/api";
 import { Card } from "./Card";
 
 export function Dashboard() {
+  const token = localStorage.getItem('feedget@token');
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await api.get('/feedbacks');
-      setFeedbacks(response.data);
+    try {
+      (async () => {
+        const response = 
+          await api.get('/feedbacks', {
+            headers: {
+              Authorization: `Bearer ${token}` 
+            }
+          });
+        setFeedbacks(response.data);
+      })();
+    } catch (err: any) {
+      localStorage.removeItem('feedget@token');
     }
 
-    fetchData();
     console.log(feedbacks);
   }, []);
 

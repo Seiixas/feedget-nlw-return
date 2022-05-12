@@ -7,6 +7,9 @@ import nlwLogo from '../../assets/images/nlw.svg';
 import { api } from "../../lib/api";
 
 export function Login() {
+  const tokenLocalStorage = localStorage.getItem('feedget@token');
+  const [token, setToken] = useState(tokenLocalStorage ?? '');
+
   const [authenticationMail, setAuthenticationMail] = useState<string | null>(null);
   const [authenticationPassword, setAuthenticationPassword] = useState<string | null>(null);
 
@@ -20,10 +23,14 @@ export function Login() {
         email: authenticationMail,
         password: authenticationPassword
       });
+
+      console.log(response.data);
       
       const { data } = response;
       if ('token' in data) {
+        setToken(data.token);
         setIsAuthenticated(true);
+        localStorage.setItem('feedget@token', data.token);
       } 
     } catch (error: any) {
       alert('Usuário ou senha incorretos')
@@ -31,7 +38,7 @@ export function Login() {
     
   }
 
-  return !isAuthenticated ? (
+  return !token ? (
     <div
       className="w-[100vw] h-[100vh] flex justify-center items-center">
         <form onSubmit={handleAuthentication} className="flex flex-col bg-zinc-100 p-12 rounded-xl">
