@@ -32,7 +32,7 @@ export function Dashboard() {
         </h1>
       </header>
       {
-        feedbacks.map((feedback) => (
+        feedbacks.map((feedback: any) => (
           <Card 
             comment={feedback.comment}
             feedbackType={feedback.type}
