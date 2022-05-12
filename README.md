@@ -35,8 +35,9 @@ O Feedget está disponível em produção e pode ser acessado por meio do domín
 @@ [🚀] Tema light/dark.                        @@
 @@ [🚀] Suporte a multilinguagem.               @@
 @@ [🚀] Avaliação de severidade de bug.         @@
+@@ [🚀] Dashboard de feedbacks.                 @@
+@@ [🚀] Documentação da API                     @@
 #  [  ] Containerizar com Docker.                ##
-#  [  ] Dashboard de feedbacks.                  ##
 
 +  Feitos com a NLW          ++
 @@ Feitos para a milha extra @@
@@ -46,6 +47,11 @@ O Feedget está disponível em produção e pode ser acessado por meio do domín
 ### 💻 Rodar o Projeto
 
 Para rodar o back-end, front-end e mobile dessa aplicação, veja no seguinte [guia](INSTALL.md).
+
+### Documentação da API
+
+Disponível pela rota GET `/api-docs`:"
+`http://localhost:3333/api-docs`
 
 <hr />
 <p align="center">
