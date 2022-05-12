@@ -69,19 +69,6 @@ export function WidgetSettings({ onFeedbackRestartRequested }: WidgetSettingsPro
               className="block"
               name="toggle-1" />
           </div>
-          <div className="flex justify-between py-1">
-            <label className="text-sm">Daltonismo</label>
-            <Toggle
-              leftBackgroundColor="#996DFF"
-              rightBackgroundColor="#8257e6"
-              borderColor="#71717a"
-              leftBorderColor="#71717a"
-              rightBorderColor="#71717a"
-              leftKnobColor="#fff"
-              rightKnobColor="#fff"
-              borderWidth="1px"
-              name="toggle-2" />
-          </div>
           <hr className="m-1" />
         </fieldset>
         <fieldset className="flex justify-center gap-2">

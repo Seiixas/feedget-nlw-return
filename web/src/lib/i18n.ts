@@ -26,7 +26,8 @@ i18n
           "OTHER": "Other",
           "Language": "Language",
           "Color": "Colors",
-          "DarkMode": "Dark Mode"
+          "DarkMode": "Dark Mode",
+          "About": "How serious this bug is?"
         }
       },
       ptBR: {
@@ -42,7 +43,8 @@ i18n
           "OTHER": "Outro",
           "Language": "Idioma",
           "Color": "Cores",
-          "DarkMode": "Modo Escuro"
+          "DarkMode": "Modo Escuro",
+          "About": "Como você classifica o problema?"
         }
       },
       es: {
@@ -58,7 +60,8 @@ i18n
           "OTHER": "Otro",
           "Language": "Idioma",
           "Color": "Colores",
-          "DarkMode": "Modo Oscuro"
+          "DarkMode": "Modo Oscuro",
+          "About": "¿Cómo clasificas el problema?"
         }
       }
     },

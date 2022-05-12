@@ -73,8 +73,7 @@ export function SpeechButton ({ onMicrophoneRecording }: SpeechButtonProps) {
     >
       <Microphone
         size={36}
-        className="w-6 h-6"
-        color={isListening ? '#8257e6' : '#fff'} />
+        className={`w-6 h-6 " ${isListening ? 'text-brand-500' : 'text-zinc-800'} dark:text-zinc-200`} />
     </button>
   )
 }
