@@ -15,6 +15,7 @@ const mailProvider = {
   ethereal: NodeMailerMailProvider,
 };
 
+// @ts-ignore
 container.registerSingleton<MailProvider>("MailProvider", mailProvider[process.env.MAIL_PROVIDER]);
 
 container.registerSingleton<FeedbacksRepository>(
