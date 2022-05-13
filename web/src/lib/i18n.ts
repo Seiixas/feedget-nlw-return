@@ -27,7 +27,8 @@ i18n
           "Language": "Language",
           "Color": "Colors",
           "DarkMode": "Dark Mode",
-          "About": "How serious this bug is?"
+          "About": "How serious this bug is?",
+          "SignLanguage": "Sign Language"
         }
       },
       ptBR: {
@@ -44,7 +45,8 @@ i18n
           "Language": "Idioma",
           "Color": "Cores",
           "DarkMode": "Modo Escuro",
-          "About": "Como você classifica o problema?"
+          "About": "Como você classifica o problema?",
+          "SignLanguage": "Libras"
         }
       },
       es: {
@@ -61,7 +63,8 @@ i18n
           "Language": "Idioma",
           "Color": "Colores",
           "DarkMode": "Modo Oscuro",
-          "About": "¿Cómo clasificas el problema?"
+          "About": "¿Cómo clasificas el problema?",
+          "SignLanguage": "Lenguaje de Señas"
         }
       }
     },

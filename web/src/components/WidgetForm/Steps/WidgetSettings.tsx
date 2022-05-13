@@ -33,6 +33,25 @@ export function WidgetSettings({ onFeedbackRestartRequested }: WidgetSettingsPro
     }
   }
 
+  function handleSignLanguage() {
+    const vlibras = document.getElementById('vlibras')!;
+
+    if (!localStorage.getItem('vlibras')) {
+      localStorage.setItem('vlibras', 'disabled');
+    }
+
+    if (localStorage.getItem('vlibras') === 'disabled') {
+      vlibras.classList.remove('disabled');
+      vlibras.classList.add('enabled');
+      localStorage.setItem('vlibras', 'enabled');
+    } else {
+      vlibras.classList.remove('enabled');
+      vlibras.classList.add('disabled');
+      localStorage.setItem('vlibras', 'disabled');
+    }
+
+  }
+
   function handleChangeLanguage(lang: string) {
     i18next.changeLanguage(lang)
   }
@@ -71,28 +90,46 @@ export function WidgetSettings({ onFeedbackRestartRequested }: WidgetSettingsPro
           </div>
           <hr className="m-1" />
         </fieldset>
-        <fieldset className="flex justify-center gap-2">
+        <fieldset className="flex flex-col justify-center gap-2">
           <legend className="text-brand-500 py-1">
             <strong>{translationOf('Language')}</strong>
           </legend>
-          <button
-            type="button"
-            className="bg-brand-500 rounded py-1 px-2 text-white"
-            onClick={() => handleChangeLanguage('ptBR')}>
-              Português
-          </button>
-          <button
-            type="button"
-            className="bg-brand-500 rounded py-1 px-2 text-white"
-            onClick={() => handleChangeLanguage('en')}>
-            	English
-          </button>
-          <button
-            type="button"
-            className="bg-brand-500 rounded py-1 px-2 text-white"
-            onClick={() => handleChangeLanguage('es')}>
-              Español
-          </button>
+          <div className="flex justify-between py-1">
+            <label className="text-sm">{translationOf('SignLanguage')}</label>
+            <Toggle
+              leftBackgroundColor="#996DFF"
+              rightBackgroundColor="#8257e6"
+              borderColor="#71717a"
+              leftBorderColor="#71717a"
+              rightBorderColor="#71717a"
+              leftKnobColor="#fff"
+              rightKnobColor="#fff"
+              borderWidth="1px"
+              onToggle={handleSignLanguage}
+              className="block"
+              name="toggle-2"
+              checked={localStorage.getItem('vlibras') === 'enabled' ? true : false} />
+          </div>
+          <div className="flex gap-1">
+            <button
+              type="button"
+              className="bg-brand-500 rounded py-1 px-2 text-white"
+              onClick={() => handleChangeLanguage('ptBR')}>
+                Português
+            </button>
+            <button
+              type="button"
+              className="bg-brand-500 rounded py-1 px-2 text-white"
+              onClick={() => handleChangeLanguage('en')}>
+                English
+            </button>
+            <button
+              type="button"
+              className="bg-brand-500 rounded py-1 px-2 text-white"
+              onClick={() => handleChangeLanguage('es')}>
+                Español
+            </button>
+          </div>
           
         </fieldset>
       </div>
