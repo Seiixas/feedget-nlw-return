@@ -7,7 +7,7 @@ import { SignUp } from "./components/Signup";
 
 export function App() {
   return <>
-    <SignUp />
+    <Login />
     <Widget />
   </>
 }

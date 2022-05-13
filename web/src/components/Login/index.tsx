@@ -5,6 +5,7 @@ import { Dashboard } from '../Dashboard';
 
 import nlwLogo from '../../assets/images/nlw.svg';
 import { api } from "../../lib/api";
+import { SignUp } from "../Signup";
 
 export function Login() {
   const tokenLocalStorage = localStorage.getItem('feedget@token');
@@ -14,6 +15,8 @@ export function Login() {
   const [authenticationPassword, setAuthenticationPassword] = useState<string | null>(null);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const [isOnSignupScreen, setIsOnSignupScreen] = useState(false);
 
   async function handleAuthentication(event: FormEvent) {
     event.preventDefault();
@@ -38,7 +41,7 @@ export function Login() {
     
   }
 
-  return !token ? (
+  return (isOnSignupScreen ? <SignUp onSignUpAppear={() => setIsOnSignupScreen(false)}/> : !token ? (
     <div
       className="w-[100vw] h-[100vh] flex justify-center items-center">
         <form onSubmit={handleAuthentication} className="flex flex-col bg-zinc-100 dark:bg-zinc-800 p-12 rounded-xl">
@@ -63,9 +66,9 @@ export function Login() {
             type="submit"
             className="bg-brand-500 w-[100%] h-10 rounded text-zinc-100 text-sm">Entrar</button>
         
-          <span className="text-sm mt-2">Não é cadastrado? Crie sua conta <a href="#" className="text-brand-500">aqui</a>.</span>
+          <span className="text-sm mt-2">Não é cadastrado? Crie sua conta <a href="#" className="text-brand-500" onClick={() => setIsOnSignupScreen(true)}>aqui</a>.</span>
         </form>
     </div>
-  ) : (<Dashboard />)
+  ) : (<Dashboard />))
 
 }

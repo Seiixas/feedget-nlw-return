@@ -2,7 +2,11 @@ import { Lock, User } from "phosphor-react";
 import { FormEvent, useState } from "react";
 import { api } from "../../lib/api";
 
-export function SignUp() {
+interface SignUpProps {
+  onSignUpAppear: () => void;
+}
+
+export function SignUp({ onSignUpAppear }: SignUpProps) {
   const [authenticationMail, setAuthenticationMail] = useState<string | null>(null);
   const [authenticationPassword, setAuthenticationPassword] = useState<string | null>(null);
 
@@ -16,6 +20,8 @@ export function SignUp() {
       });
 
       alert('Conta criada com sucesso!');
+
+      onSignUpAppear();
     } catch (err: any) { 
       console.log(err);
       alert(`Erro \n${err.response.data.message}`)
