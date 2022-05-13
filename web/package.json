@@ -11,6 +11,7 @@
     "@djpfs/react-vlibras": "^2.0.0",
     "@headlessui/react": "^1.6.0",
     "axios": "^0.27.2",
+    "chart.js": "^3.7.1",
     "html2canvas": "^1.4.1",
     "i18next": "^21.8.0",
     "i18next-browser-languagedetector": "^6.1.4",

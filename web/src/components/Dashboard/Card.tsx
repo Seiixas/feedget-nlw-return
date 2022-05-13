@@ -20,7 +20,7 @@ export function Card({ feedbackType, comment, feedbackId, solved }: CardProps) {
 
   return (
     <div
-      className="shadow-xl text-zinc-100  bg-brand-500 rounded-xl flex py-2 px-4 items-center justify-between mb-2">
+      className="shadow-xl text-zinc-800  bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-100 rounded-xl flex py-2 px-4 items-center justify-between mb-2">
       <div className="flex flex-col">
         <h1 className="text-xl">
           <strong>{feedbackType}</strong>

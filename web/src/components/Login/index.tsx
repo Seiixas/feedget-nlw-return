@@ -62,6 +62,8 @@ export function Login() {
           <button
             type="submit"
             className="bg-brand-500 w-[100%] h-10 rounded text-zinc-100 text-sm">Entrar</button>
+        
+          <span className="text-sm mt-2">Não é cadastrado? Crie sua conta <a href="#" className="text-brand-500">aqui</a>.</span>
         </form>
     </div>
   ) : (<Dashboard />)
